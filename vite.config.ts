@@ -1,0 +1,21 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import path from 'path'
+
+export default defineConfig({
+  base: '/my-cyber-guardens-5/',
+  plugins: [react()],
+  base: process.env.BASE_URL || '/',
+  resolve: {
+    alias: { '@': path.resolve(__dirname, 'src') }
+  },
+  server: { port: 3000 },
+  build: {
+    chunkSizeWarningLimit: 200,
+    rolldownOptions: {
+      output: {
+        codeSplitting: true,
+      }
+    }
+  }
+})
